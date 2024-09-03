@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.eroad.device.mapper.OperationLogMapper">
+
+    <resultMap id="BaseResultMap" type="cn.eroad.device.entity.po.OperationLog">
+            <result property="id" column="id" jdbcType="INTEGER"/>
+            <result property="applicationCode" column="application_code" jdbcType="VARCHAR"/>
+            <result property="creator" column="creator" jdbcType="VARCHAR"/>
+            <result property="operationObject" column="operation_object" jdbcType="VARCHAR"/>
+            <result property="operationAction" column="operation_action" jdbcType="VARCHAR"/>
+            <result property="gmtCreated" column="gmt_created" jdbcType="TIMESTAMP"/>
+            <result property="description" column="description" jdbcType="VARCHAR"/>
+            <result property="status" column="status" jdbcType="INTEGER"/>
+            <result property="creatorId" column="creator_id" jdbcType="VARCHAR"/>
+            <result property="params" column="params" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,application_code,creator,
+        operation_object,operation_action,gmt_created,
+        description,status,creator_id,
+        params
+    </sql>
+</mapper>

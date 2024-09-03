@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.eroad.device.mapper.DictMapper">
+
+    <select id="deleteFlag" resultType="int">
+        SELECT 1
+        FROM device_maintain
+        WHERE device_type= #{dictEncoding} OR manufacturer = #{dictEncoding} OR network_type = #{dictEncoding} OR dependency =  #{dictEncoding} LIMIT 1;
+    </select>
+</mapper>

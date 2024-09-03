@@ -1,0 +1,69 @@
+server:
+  port: 53046
+  tomcat:
+    max-threads: 800
+    uri-encoding: utf-8
+
+
+##日志配置
+logging:
+  config: classpath:spring/springBoot-logbak-dev.xml
+spring:
+  profiles:
+    active: local
+  application:
+    name: device-ac-videocast
+  datasource:
+    url: jdbc:mysql://your_mysql_ip:3306/eroad?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+    username: your_mysql_username
+    password: your_mysql_password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    # 初始化，最小，最大连接数
+    initialSize: 3
+    minIdle: 3
+    maxActive: 18
+    # 获取数据库连接等待的超时时间
+    maxWait: 60000
+
+  rabbitmq:
+    host: your_rabbitmq_ip
+    port: 5672
+    username: your_rabbitmq_username
+    password: your_rabbitmq_password
+    mode: single
+    declareConfig:
+      - exchange: deviceDataReportExchange
+        bindList:
+          # 往采控平台设备管理模块发送状态、告警、配置、自动注册、心跳消息
+          - queue: device_ac_statusInfo
+            routingKey: device.single.statusInfo
+          - queue: device_ac_alarmInfo
+            routingKey: device.single.alarmInfo
+          - queue: device_ac_configInfo
+            routingKey: device.single.configInfo
+          - queue: device_ac_autoRegisterInfo
+            routingKey: device.single.autoRegisterInfo
+          - queue: device_ac_onlineStatus
+            routingKey: device.single.onlineStatus
+
+          # 往运维平台发送状态、告警、设备注册消息
+          - queue: device_svr_statusInfo
+            routingKey: device.single.statusInfo
+          - queue: device_svr_alarmInfo
+            routingKey: device.single.alarmInfo
+          - queue: device_svr_registerInfo
+            routingKey: device.single.registerInfo
+      # 设备变更消息发送和接收
+      - exchange: deviceChangeFanoutExchange
+        type: fanout
+        bindList:
+          - queue: device_ac_cacheSend
+      #往运维平台发送在线离线的变化消息
+      - exchange: deviceDataReportExchange
+        bindList:
+          - queue: device_svr_onlineOffline
+            routingKey: device.single.onlineOffline
+mybatis-plus:
+  # 映射文件的位置
+  mapper-locations: classpath*:mapper/*.xml

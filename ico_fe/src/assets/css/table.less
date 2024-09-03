@@ -1,0 +1,155 @@
+
+.dashboard-dialog {
+  .el-pagination {
+    justify-content: center;
+    --el-pagination-button-bg-color: rgba(71, 235, 235, 0.19);
+    --el-pagination-button-disabled-bg-color: rgba(71, 235, 235, 0.19);
+  }
+  
+  .el-pagination .el-pager li:not(.is-disabled).is-active {
+    background: #47EBEB;
+    color: #FFFFFF;
+  }
+  
+  .el-pagination .btn-next,
+  .el-pagination .btn-prev,
+  .el-pagination .el-pager li {
+    color: #FFFFFF;
+    border: 1px solid #47EBEB;
+    border-radius: 1px;
+    background: transparent;
+    margin: 2px;
+  }
+  
+  .el-pagination .btn-next,
+  .el-pagination .btn-prev {
+    border: 1px solid #47EBEB;
+    border-radius: 1px;
+    color: #FFFFFF;
+  }
+  
+  .el-pagination .btn-next:hover:not([disabled]),
+  .el-pagination .btn-prev:hover:not([disabled]) {
+    color: #FFFFFF;
+  }
+  
+  .el-pagination .btn-next:disabled,
+  .el-pagination .btn-prev:disabled {
+    background: rgba(71, 235, 235, 0.19);
+  }
+  .select-container {
+    border: 1px solid #01ffff;
+  }
+
+  .el-table {
+    --el-table-border-color: transparent;
+    border: none;
+    color: #fff;
+    background-color: transparent;
+
+    tr {
+      background-color: transparent;
+    }
+
+    tr:hover {
+      background-color: #273152;
+    }
+
+    td {
+      border: none;
+      background-color: transparent;
+    }
+
+    .el-table__body {
+      background-color: transparent;
+    }
+
+    .el-table__body tr:hover>td {
+      background-color: unset;
+    }
+
+    th {
+      border: none;
+      color: #fff;
+      background: transparent;
+
+      .el-table__cell {
+        background-color: transparent;
+      }
+    }
+
+    .el-table__empty-block {
+      background-color: transparent;
+    }
+
+    .el-loading-mask {
+      background-color: #151D37cc;
+    }
+
+    .el-table-config {
+      display: none;
+    }
+  }
+
+  .el-table::before {
+    height: 0px;
+  }
+
+  .el-table--border::after {
+    width: 0;
+  }
+
+  .el-radio-group {
+    margin-left: 10px;
+
+    .el-radio-button__inner {
+      background: #193057;
+      color: #fff;
+    }
+  }
+
+  .el-tabs--card>.el-tabs__header {
+    border: none;
+  }
+
+
+
+  input,
+  textarea,
+  .el-date-editor {
+    background-color: transparent;
+    border: 1px solid #01ffff;
+    color: #fff;
+
+    input {
+      border: none;
+    }
+  }
+
+  .el-input {
+    .el-input-group__append {
+      background-color: #00000000;
+      border: 1px solid #01ffff;
+    }
+  }
+
+  .el-form-item__label {
+    color: #fff;
+  }
+
+  .el-tabs__nav {
+    border: none;
+
+    .el-tabs__item {
+      border: none;
+      background-color: #193057;
+    }
+
+    .is-active {
+      background-color: #01ffff;
+      border: 1px solid #01ffff;
+    }
+  }
+
+
+}

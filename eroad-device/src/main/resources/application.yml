@@ -1,0 +1,132 @@
+#info 设备运行时信息功能测试
+#status 设备状态功能测试
+#dev 集成以上两种功能配置文件
+
+server:
+  port: 14080
+  tomcat:
+    max-threads: 800
+    uri-encoding: utf-8
+  servlet:
+    contextPath: /
+spring:
+  profiles:
+    active: local
+  application:
+    name: eroad-dev
+  datasource:
+    url: jdbc:mysql://your_mysql_ip:3306/eroad?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+    username: your_mysql_username
+    password: your_mysql_password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    # 初始化，最小，最大连接数
+    initialSize: 3
+    minIdle: 3
+    maxActive: 18
+    # 获取数据库连接等待的超时时间
+    maxWait: 60000
+  redis:
+    timeout: 30000
+    mode: cluster
+    password: redis-password
+    cluster:
+      max-redirects: 3
+      nodes:
+        - redis-cluster-1
+        - redis-cluster-2
+        - redis-cluster-3
+        - redis-cluster-4
+        - redis-cluster-5
+        - redis-cluster-6
+    jedis:
+      pool:
+        max-active: 100
+        max-idle: 100
+        max-wait: -1
+        min-idle: 10
+    database: 0
+  rabbitmq:
+    # cluster,single
+    mode: single
+    host: your_rabbitmq_ip
+    port: 5672
+    username: your_rabbitmq_username
+    password: your_rabbitmq_password
+    #虚拟host 可以不设置,使用server默认host
+    virtual-host: /
+    declareConfig:
+      - exchange: deviceDataReportExchange
+        bindList:
+          # 采控平台设备管理模块发送状态、告警、配置、自动注册、心跳消息、设备信息修改
+          - queue: device_ac_statusInfo
+            routingKey: device.single.statusInfo
+          - queue: device_ac_alarmInfo
+            routingKey: device.single.alarmInfo
+          - queue: device_ac_configInfo
+            routingKey: device.single.configInfo
+          - queue: device_ac_autoRegisterInfo
+            routingKey: device.single.autoRegisterInfo
+          - queue: device_ac_onlineStatus
+            routingKey: device.single.onlineStatus
+          - queue: device_ac_modifyInfo
+            routingKey: device.single.modifyInfo
+          - queue: device_ac_shortlwt_alarmInfo
+            routingKey: device.single.shortlwt.alarmInfo
+          - queue: device_ac_countInfo
+            routingKey: device.ac.countInfo
+      #往运维平台发送在线离线的变化消息
+      - exchange: deviceDataReportExchange
+        bindList:
+          - queue: device_svr_onlineOffline
+            routingKey: device.single.onlineOffline
+#pagehelper分页插件配置
+#pagehelper:
+#  helperDialect: mysql
+#  reasonable: false
+#  supportMethodsArguments: true
+#  params: count=countSql
+#mybatis配置
+mybatis-plus:
+  # 映射文件的位置
+  mapper-locations: classpath*:mapper/*.xml
+  global-config:
+    #数据库相关配置
+    db-config:
+      #主键类型  AUTO:"数据库ID自增", INPUT:"用户输入ID", ID_WORKER:"全局唯一ID (数字类型唯一ID)", UUID:"全局唯一ID UUID";
+      id-type: ID_WORKER
+      #字段策略 IGNORED:"忽略判断",NOT_NULL:"非 NULL 判断"),NOT_EMPTY:"非空判断"
+      field-strategy: NOT_NULL
+      #驼峰下划线转换
+      column-underline: true
+      logic-delete-value: -1
+      logic-not-delete-value: 0
+      logic-delete-field: deleted
+    banner: false
+  #原生配置
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    call-setters-on-nulls: true
+    jdbc-type-for-null: 'null'
+  # 配置包别名
+  type-aliases-package: cn.eroad.device.entity
+#system:
+#  serverName: dsxc-ac-devie:8080
+#  contextPath: /device
+feign:
+  device:
+    url: 127.0.0.1:14080/device
+  system:
+    url: 127.0.0.1:13080/system
+  rad:
+    url: 127.0.0.1:53045/rad
+
+##日志配置
+logging:
+  config: classpath:spring/springBoot-logbak-test.xml
+
+#有心跳的设备类型
+heartbeat:
+  type: rad
+

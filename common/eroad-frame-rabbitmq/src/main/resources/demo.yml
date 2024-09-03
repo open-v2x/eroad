@@ -1,0 +1,44 @@
+spring:
+  ##应用名
+  application:
+    name: eroad-demo
+  rabbitmq:
+    # cluster,single
+    mode: cluster
+    host: 192.168.0.196
+    port: 5672
+    addresses: 192.168.0.196:5672
+    username: guest
+    password: guest
+    #虚拟host 可以不设置,使用server默认host
+    virtual-host: /
+    declareConfig:
+      - exchange: liyqExchange
+        #交换机类型：可以不配置，默认为topic
+        # fanout ：把所有发送到该交换器的消息路由到所有与该交换器绑定的队列中。不需要指定Routingkey和BindingKey
+        # direct ：把消息路由到Routingkey与BindingKey完全匹配的队列中。一个交换器可以与多个队列绑定，同时一个交换器与一个队列绑定的时候可以使用多个BindingKey来多次绑定。
+        # topic  ：把消息路由到Routingkey与BindingKey匹配的队列中,但它不是完全匹配，而是模糊匹配
+        # header ：交换器不依赖于路由键的匹配规则来路由消息，而是根据发送的消息内容中的headers属性进行匹配
+        type: topic
+        bindList:
+          - queue: report_liyq_onLine
+            routingKey: report.liyq.onLine
+          - queue: report_liyq_alarm
+            routingKey: report.liyq.alarm
+    otherSource:
+      device:
+        mode: cluster
+        host: 192.168.0.196
+        port: 5672
+        addresses: 192.168.0.196:5672
+        username: guest
+        password: guest
+        #虚拟host 可以不设置,使用server默认host
+        virtual-host: /
+        declareConfig:
+          - exchange: liyq0Exchange
+            bindList:
+              - queue: report_liyq0_onLine
+                routingKey: report.liyq0.onLine
+              - queue: report_liyq0_alarm
+                routingKey: report.liyq0.alarm

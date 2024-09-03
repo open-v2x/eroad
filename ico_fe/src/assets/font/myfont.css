@@ -1,0 +1,29 @@
+@font-face {
+    font-family: 'Digital Numbers';
+    src: url('./Digital\ Numbers.ttf');
+}
+
+@font-face {
+    font-family: 'Noto Sans SC';
+    src: url('./NotoSansSC-Regular.otf');
+}
+
+@font-face {
+    font-family: 'Acens';
+    src: url('./Acens-1.ttf');
+}
+
+@font-face {
+    font-family: 'MStiffHei PRC';
+    src: url('./MStiffHeiPRC-UltraBold.ttf');
+}
+
+@font-face {
+    font-family: 'DINPro';
+    src: url('./DINPro-Regular.otf');
+}
+
+@font-face {
+  font-family: 'iconfont';
+  src: url('./iconfont.woff2?t=1667818966199') format('woff2');
+}

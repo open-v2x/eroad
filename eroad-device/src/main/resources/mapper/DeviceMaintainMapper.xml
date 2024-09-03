@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.eroad.device.mapper.DeviceMaintainMapper">
+
+    <resultMap type="cn.eroad.device.entity.devicemaintain.DeviceMaintain" id="BaseResultMap">
+        <result column="device_id" property="deviceId" jdbcType="VARCHAR" />     <!---->
+        <result column="device_name" property="deviceName" jdbcType="VARCHAR" />
+        <result column="device_type" property="deviceType" jdbcType="VARCHAR" />
+        <result column="manufacturer" property="manufacturer" jdbcType="VARCHAR" />
+        <result column="network_type" property="networkType" jdbcType="VARCHAR" />
+        <result column="parent_device_id" property="parentDeviceId" jdbcType="VARCHAR" />
+        <result column="longitude" property="longitude" jdbcType="VARCHAR" />
+        <result column="latitude" property="latitude" jdbcType="VARCHAR" />
+        <result column="altitude" property="altitude" jdbcType="VARCHAR" />
+        <result column="device_ip" property="deviceIp" jdbcType="VARCHAR" />
+        <result column="dependency" property="dependency" jdbcType="VARCHAR" />
+        <result column="version" property="version" jdbcType="VARCHAR" />
+        <result column="device_account" property="deviceAccount" jdbcType="VARCHAR" />
+        <result column="device_passWord" property="devicePassWord" jdbcType="VARCHAR" />
+        <result column="online_state" property="onlineState" jdbcType="VARCHAR" />
+        <result column="alarm_state" property="alarmState" jdbcType="VARCHAR" />
+        <result column="comment" property="comment" jdbcType="VARCHAR" />
+        <result column="domain_name" property="domainName" jdbcType="VARCHAR" />
+        <result column="device_sign" property="deviceSign" jdbcType="VARCHAR" />
+        <result column="device_area" property="deviceArea" jdbcType="VARCHAR" />
+        <result column="port" property="port" jdbcType="VARCHAR" />
+        <result column="network_link" property="networkLink" jdbcType="VARCHAR" />
+        <result column="mac" property="mac" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Device_List">
+        device_id, device_name, device_type,
+        manufacturer, network_type,parent_device_id,
+        longitude, latitude, altitude,
+        device_ip,dependency,version,
+        comment,domain_name,
+        device_area,port,network_link,mac
+    </sql>
+
+    <!--    批量添加数据-->
+    <insert id="excelImport" parameterType="java.util.List">
+        insert into device_maintain(device_id, device_name, device_type,
+        manufacturer, network_type,parent_device_id,
+        longitude, latitude, altitude,
+        device_ip,dependency,version,
+        comment,domain_name,
+        device_area,port,mac)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.deviceId,jdbcType=CHAR}, #{item.deviceName,jdbcType=VARCHAR}, #{item.deviceType,jdbcType=VARCHAR},
+            #{item.manufacturer,jdbcType=VARCHAR}, #{item.networkType,jdbcType=VARCHAR}, #{item.parentDeviceId,jdbcType=VARCHAR},
+            #{item.longitude,jdbcType=VARCHAR}, #{item.latitude,jdbcType=VARCHAR}, #{item.altitude,jdbcType=VARCHAR},
+            #{item.deviceIp,jdbcType=VARCHAR}, #{item.dependency,jdbcType=VARCHAR}, #{item.version,jdbcType=VARCHAR},
+            #{item.comment,jdbcType=VARCHAR},#{item.domainName,jdbcType=VARCHAR},
+            #{item.deviceArea,jdbcType=VARCHAR},#{item.port,jdbcType=VARCHAR},#{item.mac,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+
+    <select id="getNameByDeviceId" parameterType="java.lang.String" resultType="java.lang.String">
+        select device_name
+        from device_maintain
+        where device_id = #{deviceId}
+    </select>
+
+    <select id="getSnListByType" parameterType="java.lang.String" resultType="java.lang.String">
+        select device_id
+        from device_maintain
+        where device_type = #{deviceType}
+    </select>
+
+    <select id="getMaintainById" parameterType="java.util.List" resultType="cn.eroad.device.entity.deviceConfig.DeviceMaintainVo">
+        select
+        device_id as deviceId,
+        device_name as deviceName
+        from device_maintain
+        <where>
+            device_id in
+            <foreach collection="list" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </where>
+    </select>
+
+    <!--批量修改旧数据-->
+    <update id="excelUpdate" parameterType="java.util.List">
+        <foreach collection="list" item="item" index="index"  separator=";">
+            UPDATE device_maintain
+
+            SET
+            device_name= #{item.deviceName,jdbcType=VARCHAR},device_type=#{item.deviceType,jdbcType=VARCHAR},
+            parent_device_id=#{item.parentDeviceId,jdbcType=VARCHAR},
+            longitude= #{item.longitude,jdbcType=VARCHAR}, latitude=#{item.latitude,jdbcType=VARCHAR}, altitude=#{item.altitude,jdbcType=VARCHAR},
+            device_ip= #{item.deviceIp,jdbcType=VARCHAR}, dependency=#{item.dependency,jdbcType=VARCHAR}, version=#{item.version,jdbcType=VARCHAR},
+            comment=#{item.comment,jdbcType=VARCHAR},domain_name=#{item.domainName,jdbcType=VARCHAR},
+            device_area=#{item.deviceArea,jdbcType=VARCHAR},port=#{item.port,jdbcType=VARCHAR},mac=#{item.mac,jdbcType=VARCHAR}
+            WHERE device_id = #{item.deviceId,jdbcType=CHAR}
+        </foreach>
+
+    </update>
+
+
+    <!--查询可发送心跳设备类型的设备信息-->
+    <select id="selectHeartDevice"  parameterType="java.util.List" resultType="cn.eroad.device.entity.devicemaintain.DeviceMaintain">
+       select
+       <include refid="Device_List" />
+       from device_maintain
+       where device_type not in ('onu','olt')
+    </select>
+
+    <select id="selectNoHeartDeviceType" parameterType="java.util.List" resultType="java.lang.String">
+        select  DISTINCT device_type
+        from device_maintain
+        where  device_type not in ('onu','olt')
+
+    </select>
+
+
+</mapper>

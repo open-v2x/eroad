@@ -1,0 +1,6 @@
+#本模块为设备缓存通用处理模块，使用redis和redis事件通知处理存量、增量数据
+提供下列功能：
+1、初始化redis存量数据，需要在设备服务启动时调用DeviceCache.initDeviceCache(List<?> list) 方法，入参为全量的设备数据
+2、批量更新redis设备数据，需要在设备批量更新时调用DeviceCache.updateDeviceCache(List<?> list) 方法，入参为多个设备数据
+3、单个更新redis设备数据，需要在设备更新时调用DeviceCache.updateDeviceCache(Object item) 方法，入参为单个的设备数据
+4、根据设备SnList获取每个分组下的snlist，在业务网关下发设备相关指令时调用DeviceCache.domainSnListHandler(List<String> snList) 方法，入参为设备sn集合数据

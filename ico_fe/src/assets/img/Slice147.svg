@@ -1,0 +1,21 @@
+<svg width="376" height="44" viewBox="0 0 376 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="&#229;&#136;&#135;&#229;&#155;&#190;">
+<rect width="1920" height="1080" transform="translate(-994 -91)" fill="#000033"/>
+<g id="Frame 427321558">
+<path id="Vector 1022" d="M4 38.5V0H376V44H9.5L4 38.5Z" fill="url(#paint0_linear_134_6610)" fill-opacity="0.15"/>
+<rect id="Rectangle 96075048" y="14" width="2" height="16" fill="#01FFFF" fill-opacity="0.6"/>
+<path id="Vector 1027" d="M4.5 0V38.5L9.5 43.5H376" stroke="url(#paint1_linear_134_6610)" stroke-opacity="0.3"/>
+</g>
+</g>
+<defs>
+<linearGradient id="paint0_linear_134_6610" x1="4" y1="22" x2="376" y2="22" gradientUnits="userSpaceOnUse">
+<stop stop-color="#01FFFF"/>
+<stop offset="0.664583" stop-color="#01FFFF" stop-opacity="0.15"/>
+<stop offset="1" stop-color="#01FFFF" stop-opacity="0"/>
+</linearGradient>
+<linearGradient id="paint1_linear_134_6610" x1="5" y1="44" x2="376" y2="44" gradientUnits="userSpaceOnUse">
+<stop stop-color="#01FFFF"/>
+<stop offset="1" stop-color="#01FFFF" stop-opacity="0"/>
+</linearGradient>
+</defs>
+</svg>

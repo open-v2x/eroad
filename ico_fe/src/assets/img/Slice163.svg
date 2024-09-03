@@ -1,0 +1,40 @@
+<svg width="936" height="640" viewBox="0 0 936 640" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="&#229;&#136;&#135;&#229;&#155;&#190;">
+<rect width="1920" height="1890" transform="translate(-27 -589)" fill="#000033"/>
+<g id="Frame 427322063">
+<path id="Vector 1134" d="M90 12L102 0H90L78 12H90Z" fill="#01FFFF"/>
+<path id="Vector 1135" d="M70 12L82 0H70L58 12H70Z" fill="#01FFFF"/>
+<path id="Vector 1136" d="M50 12L62 0H50L38 12H50Z" fill="#01FFFF"/>
+<g id="Union" filter="url(#filter0_b_134_6610)">
+<path d="M0 28L12 16H94L110 0H924L936 12V628L924 640H12L0 628V28Z" fill="#081245" fill-opacity="0.6"/>
+<path d="M94 17H94.4142L94.7071 16.7071L110.414 1H923.586L935 12.4142V627.586L923.586 639H12.4142L1 627.586V28.4142L12.4142 17H94Z" stroke="#3399FF" stroke-opacity="0.6" stroke-width="2"/>
+</g>
+<path id="Vector 1142" d="M885 28H936V12L924 0H867V10L885 28Z" fill="url(#paint0_linear_134_6610)" fill-opacity="0.3"/>
+<path id="Vector 1137" d="M936 12L924 0H918L936 18V12Z" fill="#01FFFF"/>
+<path id="Vector 1138" d="M936 628L924 640H918L936 622V628Z" fill="#01FFFF"/>
+<path id="Vector 1139" d="M0 628L12 640H18L0 622V628Z" fill="#01FFFF"/>
+<path id="Vector 1140" d="M0 28L12 16H18L0 34V28Z" fill="#01FFFF"/>
+<g id="Frame 427321327">
+<path id="Vector 81" d="M915.5 10.5L904.5 21.5" stroke="white" stroke-linecap="round"/>
+<path id="Vector 82" d="M904.5 10.5L915.5 21.5" stroke="white" stroke-linecap="round"/>
+</g>
+<path id="Vector 1141" d="M936 28H885L867 10" stroke="url(#paint1_linear_134_6610)"/>
+</g>
+</g>
+<defs>
+<filter id="filter0_b_134_6610" x="-16" y="-16" width="968" height="672" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feGaussianBlur in="BackgroundImage" stdDeviation="8"/>
+<feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_134_6610"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_134_6610" result="shape"/>
+</filter>
+<linearGradient id="paint0_linear_134_6610" x1="901.5" y1="0" x2="901.5" y2="28" gradientUnits="userSpaceOnUse">
+<stop stop-color="#3399FF" stop-opacity="0"/>
+<stop offset="1" stop-color="#3399FF"/>
+</linearGradient>
+<linearGradient id="paint1_linear_134_6610" x1="874" y1="28" x2="936" y2="28" gradientUnits="userSpaceOnUse">
+<stop stop-color="#3399FF"/>
+<stop offset="1" stop-color="#3399FF" stop-opacity="0"/>
+</linearGradient>
+</defs>
+</svg>

@@ -1,0 +1,96 @@
+spring:
+  profiles:
+    active: local
+  application:
+    name: eroad-rad
+  kafka:
+    bootstrap-servers: your-kafka-server1:9092,your-kafka-server2:9092,your-kafka-server3:9092
+    producer:
+      batch-size: 16384
+      buffer-memory: 33554432
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      retries: 0
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+  rabbitmq:
+    host: your_rabbitmq_ip
+    port: 5672
+    username: your_rabbitmq_username
+    password: your_rabbitmq_password
+    mode: single
+    declareConfig:
+      - exchange: deviceDataReportExchange
+        bindList:
+          # 往采控平台设备管理模块发送状态、告警、配置、自动注册、心跳消息
+          - queue: device_ac_statusInfo
+            routingKey: device.single.statusInfo
+          - queue: device_ac_alarmInfo
+            routingKey: device.single.alarmInfo
+          - queue: device_ac_configInfo
+            routingKey: device.single.configInfo
+          - queue: device_ac_autoRegisterInfo
+            routingKey: device.single.autoRegisterInfo
+          - queue: device_ac_onlineStatus
+            routingKey: device.single.onlineStatus
+            # 往运维平台发送状态、告警、设备注册消息
+          - queue: device_svr_statusInfo
+            routingKey: device.single.statusInfo
+          - queue: device_svr_alarmInfo
+            routingKey: device.single.alarmInfo
+          - queue: device_svr_registerInfo
+            routingKey: device.single.registerInfo
+      # 设备变更消息发送和接收
+      - exchange: deviceChangeFanoutExchange
+        type: fanout
+        bindList:
+          - queue: device_ac_cacheSend
+  redis:
+    timeout: 30000
+    password: redis_password
+    cluster:
+      max-redirects: 3
+      nodes:
+        - redis-cluster-1
+        - redis-cluster-2
+        - redis-cluster-3
+        - redis-cluster-4
+        - redis-cluster-5
+        - redis-cluster-6
+    jedis:
+      pool:
+        max-active: 100
+        max-idle: 100
+        max-wait: -1
+        min-idle: 10
+    database: 0
+  main:
+    allow-bean-definition-overriding: true
+logging:
+  config: classpath:spring/springBoot-logbak-test.xml
+rad:
+  cloudpoint:
+    port: 9959
+  nettyserver:
+    port: 10050
+  #  target:
+  #    ip: 127.0.0.1
+  #    port: 8888
+  nettySendServer:
+    port: 12349
+
+eroad:
+  device:
+    cache:
+      listener: open
+      url: http://127.0.0.1:14080/device/cache/list?type=rad
+device:
+  online:
+    expired-milli: 90000
+
+feign:
+  device:
+    url: 127.0.0.1:14080/device
+
+server:
+  port: 53045
+  servlet:
+    contextPath: /rad

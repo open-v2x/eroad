@@ -1,0 +1,24 @@
+<svg width="164" height="48" viewBox="0 0 164 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Frame 427321587">
+<g id="Union" filter="url(#filter0_b_134_6866)">
+<path d="M22 4L2 48H161L141 4H22Z" fill="url(#paint0_linear_134_6866)" fill-opacity="0.6"/>
+</g>
+<path id="Vector 1028" d="M0.5 43L19 0.5H144L163.5 43" stroke="url(#paint1_linear_134_6866)"/>
+</g>
+<defs>
+<filter id="filter0_b_134_6866" x="-6" y="-4" width="175" height="60" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feGaussianBlur in="BackgroundImage" stdDeviation="4"/>
+<feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_134_6866"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_134_6866" result="shape"/>
+</filter>
+<linearGradient id="paint0_linear_134_6866" x1="82" y1="4" x2="82" y2="48" gradientUnits="userSpaceOnUse">
+<stop stop-color="#01FFFF" stop-opacity="0"/>
+<stop offset="1" stop-color="#01FFFF"/>
+</linearGradient>
+<linearGradient id="paint1_linear_134_6866" x1="82.5" y1="-0.5" x2="82.5" y2="43.5" gradientUnits="userSpaceOnUse">
+<stop stop-color="#01FFFF"/>
+<stop offset="1" stop-color="#01FFFF" stop-opacity="0"/>
+</linearGradient>
+</defs>
+</svg>

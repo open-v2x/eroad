@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.eroad.device.mapper.DeviceConfigInfoMapper">
+
+    <!--查询列表-->
+    <select id="getDeviceConfigList" parameterType="cn.eroad.device.entity.deviceConfig.ListParamVo"
+            resultType="cn.eroad.device.entity.deviceConfig.DeviceConfigInfo">
+        select
+        device_id, device_name, device_type, config_type, status, create_time
+        from device_config_info
+        <where>
+            <if test="deviceType != null and deviceType != ''">
+                and device_type = #{deviceType}
+            </if>
+            <if test="configType != null and configType != ''">
+                and config_type = #{configType}
+            </if>
+        </where>
+        order by create_time desc
+    </select>
+
+    <!--查询配置供缓存初始化用-->
+    <select id="getDeviceConfigDTO" resultType="cn.eroad.core.dto.DeviceConfigDTO">
+        select
+        device_id as sn,
+        device_type as deviceType,
+        config_type as configType,
+        update_time as updateTime,
+        config_json as dataJson
+        from device_config_info
+        order by update_time desc
+    </select>
+
+    <!--查询列表（增加snList筛选条件）-->
+    <select id="getDeviceConfigListBySnList" resultType="cn.eroad.device.entity.deviceConfig.DeviceConfigInfo">
+        select
+        device_id, device_name, device_type, config_type, status, create_time
+        from device_config_info
+        <where>
+            device_id in
+            <foreach collection="list" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+            <if test="deviceType != null and deviceType != ''">
+                and device_type = #{deviceType}
+            </if>
+            <if test="configType != null and configType != ''">
+                and config_type = #{configType}
+            </if>
+        </where>
+        order by create_time desc
+    </select>
+
+    <!--查询配置详情-->
+    <select id="getConfigDetail" parameterType="cn.eroad.device.entity.deviceConfig.DetailParamVo" resultType="cn.eroad.device.entity.deviceConfig.DetailResultVo">
+        select
+        device_id as deviceId,
+        config_json as configJson
+        from device_config_info
+        <where>
+            <if test="deviceId != null and deviceId != ''">
+                and device_id = #{deviceId}
+            </if>
+            <if test="configType != null and configType != ''">
+                and config_type = #{configType}
+            </if>
+        </where>
+    </select>
+
+    <!--查询配置详情（超维用）-->
+    <select id="getConfig" resultType="cn.eroad.device.entity.deviceConfig.ConfigSuperResultVo">
+        select
+        device_id as sn,
+        device_type as deviceType,
+        config_type as configType,
+        config_json as dataJson,
+        update_time as updateTime
+        from device_config_info
+        <where>
+            config_type = #{configType}
+            and
+            device_id in
+            <foreach collection="snList" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </where>
+    </select>
+
+    <!--批量删除-->
+    <delete id="deleteConfig" parameterType="java.util.List">
+        delete from device_config_info
+        <where>
+            device_id in
+            <foreach collection="list" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </where>
+    </delete>
+
+    <!--新增配置-->
+    <insert id="addConfigInfo" parameterType="cn.eroad.device.entity.deviceConfig.AddConfigParamVo">
+        insert ignore into
+            device_config_info(device_id, device_name, device_type,config_type,config_json)
+        values
+        (#{deviceId}, #{deviceName}, #{deviceType},#{configType},#{configJson})
+    </insert>
+
+    <!--修改配置-->
+    <update id="changeConfigInfo" parameterType="cn.eroad.device.entity.deviceConfig.AddConfigParamVo">
+        update device_config_info
+        set
+        device_name = #{deviceName},config_json = #{configJson}
+        where device_id = #{deviceId} and config_type = #{configType}
+    </update>
+</mapper>
+

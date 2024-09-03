@@ -1,0 +1,94 @@
+.date-picker .el-date-table td .el-date-table-cell {
+  height: 24px;
+  padding: 0;
+}
+.date-picker .el-date-table td {
+  height: 100%;
+}
+.date-picker .el-popper.is-light {
+  border: none !important;
+}
+.date-picker .el-date-range-picker__content {
+  padding: 20px;
+}
+.date-picker .el-picker-panel {
+  line-height: 24px;
+}
+.date-picker .el-date-table th {
+  color: #98A9BC;
+  padding: 0;
+}
+.date-picker .el-date-range-picker {
+  width: 400px;
+}
+.date-picker .el-date-range-picker__content .el-date-range-picker__header div {
+  margin: 0;
+}
+.date-picker .el-date-range-picker__header {
+  height: 0;
+}
+.date-picker .el-date-range-picker__header div {
+  margin: 0;
+  font-size: 14px;
+}
+.date-picker .el-picker-panel__icon-btn {
+  margin-top: 6px;
+}
+.date-picker .el-date-range-picker .el-picker-panel__body {
+  min-width: 0;
+}
+.date-picker .el-date-range-picker__content.is-left {
+  background-color: #333649;
+  color: #FFF;
+}
+.date-picker .el-date-range-picker__content.is-right {
+  background-color: #333649;
+  color: #FFF;
+}
+.date-picker .el-date-table td.next-month,
+.date-picker .el-date-table td.prev-month {
+  color: #98A9BC;
+}
+.date-picker .el-date-table td {
+  padding: 0;
+}
+.date-picker .el-date-table td .el-date-table-cell .el-date-table-cell__text {
+  height: 24px;
+  line-height: 24px;
+  border-radius: 0;
+}
+.date-picker .el-date-table td.end-date .el-date-table-cell__text,
+.date-picker .el-date-table td.start-date .el-date-table-cell__text {
+  background-color: #01FFFF;
+}
+.date-picker .el-date-table td.start-date .el-date-table-cell__text,
+.date-picker .el-date-table td.start-date .el-date-table-cell__text {
+  background-color: #01FFFF;
+}
+.date-picker .el-date-range-picker__content.is-left {
+  border: none;
+}
+.date-picker .el-date-table td.in-range .el-date-table-cell {
+  background-color: #606685;
+  color: #fff;
+}
+.date-picker .el-date-table td.end-date .el-date-table-cell {
+  border-radius: 0;
+}
+.date-picker .el-date-table td.start-date .el-date-table-cell {
+  border-radius: 0;
+}
+.date-picker .el-date-table td.today .el-date-table-cell__text {
+  color: #01FFFF;
+}
+.date-picker .el-date-table td.available:hover {
+  color: #01FFFF;
+}
+.date-picker .el-date-table td.in-range .el-date-table-cell:hover {
+  background-color: #606685;
+}
+.date-picker .el-date-editor .el-range-separator {
+  visibility: hidden;
+  display: none !important;
+  font-size: 0 !important;
+}

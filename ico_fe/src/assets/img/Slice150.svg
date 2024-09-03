@@ -1,0 +1,21 @@
+<svg width="376" height="72" viewBox="0 0 376 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Frame 427321555" clip-path="url(#clip0_136_7524)">
+<path id="Vector 1022" d="M4 66.5V0H376V72H9.5L4 66.5Z" fill="url(#paint0_linear_136_7524)" fill-opacity="0.15"/>
+<rect id="Rectangle 96075048" y="28" width="2" height="16" fill="#01FFFF" fill-opacity="0.6"/>
+<path id="Vector 1025" d="M4.5 0V66.5L9.5 71.5H376" stroke="url(#paint1_linear_136_7524)" stroke-opacity="0.3"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_136_7524" x1="4" y1="50.0006" x2="376" y2="50.0006" gradientUnits="userSpaceOnUse">
+<stop stop-color="#01FFFF"/>
+<stop offset="0.664583" stop-color="#01FFFF" stop-opacity="0.15"/>
+<stop offset="1" stop-color="#01FFFF" stop-opacity="0"/>
+</linearGradient>
+<linearGradient id="paint1_linear_136_7524" x1="4.5" y1="71.5" x2="376" y2="71.5" gradientUnits="userSpaceOnUse">
+<stop stop-color="#01FFFF"/>
+<stop offset="1" stop-color="#01FFFF" stop-opacity="0"/>
+</linearGradient>
+<clipPath id="clip0_136_7524">
+<rect width="376" height="72" fill="white"/>
+</clipPath>
+</defs>
+</svg>

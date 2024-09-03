@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.eroad.videocast.dao.mapper.VideoCastMapper">
+    <!--namespace根据自己需要创建的的mapper的路径和名称填写-->
+    <insert id="insertInfor">
+        insert into videocast_sn_to_ip(sn,ip) values(#{sn},#{ip})
+    </insert>
+
+    <select id="findSn" parameterType="String" resultType="String">
+        select sn from videocast_sn_to_ip where ip=#{ip}
+    </select>
+
+    <delete id="deleteDevice" parameterType="String">
+        delete from videocast_sn_to_ip where sn=#{sn}
+    </delete>
+
+    <select id="findDeviceSn" resultType="java.lang.String">
+        select sn from videocast_sn_to_ip
+    </select>
+</mapper>

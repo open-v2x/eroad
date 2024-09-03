@@ -1,0 +1,54 @@
+#**/.idea/
+ioc_spark/target/
+ioc-flink/target
+boot/target
+lingang/target
+trhth-value-wss/target
+ioc-flink/dependency-reduced-pom.xml
+
+# Compiled class file
+*.class
+
+# Eclipse
+.project
+.classpath
+.settings/
+
+# Intellij
+*.ipr
+*.iml
+*.iws
+.idea
+.idea/
+# Maven
+target/
+
+# Gradle
+build
+.gradle
+
+# Log file
+*.log
+log/
+
+# out
+**/out/
+
+# Mac
+.DS_Store
+
+# others
+*.jar
+*.war
+*.zip
+*.tar
+*.tar.gz
+*.pid
+*.orig
+temp/
+ioc_flink_scala/src/test/
+ioc_spark/src/test/
+ioc_spark/src/zzq/
+ioc_spark/dependency-reduced-pom.xml
+*/dependency-reduced-pom.xml
+/.idea/

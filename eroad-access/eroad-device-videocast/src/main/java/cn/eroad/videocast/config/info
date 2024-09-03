@@ -1,0 +1,8 @@
+Vendor=UNIVIEW,
+DeviceType=9,
+DeviceCode=RV942,
+Algorithm=HMAC_SHA256,
+Nonce=2448231521758104,
+Sign=NzH6FEHcrLda8ZjYEgjvBDXcctn48ztBmKi7pqYbkds=,
+Cnonce=null,
+SessionID=null

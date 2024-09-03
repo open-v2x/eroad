@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+    <servers>
+        <server>
+            <id>nexus-server</id>
+            <username>admin</username>
+            <password>Nexus321.</password>
+        </server>
+    </servers>
+
+    <mirrors>
+        <mirror>
+            <name>mvn-central</name>
+            <id>mvn-central</id>
+            <mirrorOf>central</mirrorOf>
+            <url>http://10.233.24.157:8081/repository/maven-public/</url>
+        </mirror>
+    </mirrors>
+    <profiles>
+        <profile>
+            <id>mvn-profile</id>
+            <repositories>
+                <repository>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                        <updatePolicy>always</updatePolicy>
+                    </snapshots>
+                    <id>nexus-server</id>
+                    <name>mvn-group</name>
+                    <url>http://10.233.24.157:8081/repository/maven-public/</url>
+                </repository>
+            </repositories>
+            <pluginRepositories>
+                <pluginRepository>
+                    <releases>
+                        <enabled>true</enabled>
+                        <updatePolicy>always</updatePolicy>
+                    </releases>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                    <id>nexus</id>
+                    <name>aliyun maven</name>
+                    <url>http://10.233.24.157:8081/repository/maven-public/</url>
+                </pluginRepository>
+            </pluginRepositories>
+        </profile>
+    </profiles>
+    <activeProfiles>
+        <activeProfile>mvn-profile</activeProfile>
+    </activeProfiles>
+</settings>
